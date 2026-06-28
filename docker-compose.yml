@@ -1,18 +1,18 @@
 services:
   backend:
-    build:./tour-backend
-    container_name:tour_backend
-    restart:alwase
-    port:
-      -"5000:5000"
+    build: ./tour-backend
+    container_name: tour_backend
+    restart: always
+    ports:
+      - "5000:5000"
     env_file:
-      -./tour-backend/.env
+      - ./tour-backend/.env
 
   frontend:
-    build:./tours_app
-    restart:always
-    constainer_name:toure_frontend
-    port:
-      -"3000:3000"
+    build: ./tours_app
+    container_name: tour_frontend
+    restart: always
+    ports:
+      - "3000:3000"
     env_file:
-      -./tours_app/.env
+      - ./tours_app/.env
