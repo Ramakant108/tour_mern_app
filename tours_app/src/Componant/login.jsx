@@ -24,7 +24,7 @@ const LoginSignup = ({setUser}) => {
        e.preventDefault();
        try {
         if(firstName&&lastName&&email&&password){
-          const response= await axios.post("http://localhost:3001/users/register",{
+          const response= await axios.post(`${process.env.BACKEND_API}/users/register`,{
             username:`${firstName} ${lastName}`,
             email,
             password
@@ -49,7 +49,7 @@ const LoginSignup = ({setUser}) => {
           email,
           password
         }
-        const response=await axios.get("http://localhost:3001/users/login",{params});
+        const response=await axios.get(`${process.env.BACKEND_API}/users/login`,{params});
         setUser(response.data)
         console.log(response.data)
         toast.success("Login Successfuly")

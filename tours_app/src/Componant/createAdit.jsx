@@ -20,7 +20,7 @@ const CreateTourForm = ({ user }) => {
 
   useEffect(() => {
     const getdetail = async () => {
-      const res = await axios.get(`http://localhost:3001/tours/${user.id}/update/${id}`);
+      const res = await axios.get(`${process.env.BACKEND_API}/tours/${user.id}/update/${id}`);
       setTourData(res.data[0]);
       console.log(res.data)
     };
@@ -43,7 +43,7 @@ const CreateTourForm = ({ user }) => {
     e.preventDefault();
     if (!id) {
       try {
-        const res = await axios.post("http://localhost:3001/tours", {
+        const res = await axios.post(`${process.env.BACKEND_API}/tours`, {
           Uid: user.id,
           ...tourData,
         });
@@ -54,7 +54,7 @@ const CreateTourForm = ({ user }) => {
       }
     } else {
       try {
-        const res = await axios.put(`http://localhost:3001/tours/${id}`, {
+        const res = await axios.put(`${process.env.BACKEND_API}/tours/${id}`, {
           Uid: user.id,
           ...tourData,
         });

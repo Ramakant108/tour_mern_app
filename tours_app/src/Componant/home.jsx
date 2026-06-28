@@ -8,7 +8,7 @@ const Home = ({ user }) => {
   const navigate = useNavigate();
 
   const getdetail = async () => {
-    const res = await axios.get(`http://localhost:3001/tours/${user.id}/${title}`);
+    const res = await axios.get(`${process.env.BACKEND_API}/tours/${user.id}/${title}`);
     setTours(res.data);
     console.log(tours)
   };
@@ -16,7 +16,7 @@ const Home = ({ user }) => {
   useEffect(() => {
     // console.log(user);
     const fetchdata = async () => {
-      const data = await axios.get(`http://localhost:3001/tours/${user.id}`);
+      const data = await axios.get(`${process.env.BACKEND_API}/tours/${user.id}`);
       setTours(data.data);
     };
     if (title) {
@@ -30,8 +30,8 @@ const Home = ({ user }) => {
 
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this tour?')) {
-      await axios.delete(`http://localhost:3001/tours/${id}`);
-      const data = await axios.get(`http://localhost:3001/tours/${user.id}`);
+      await axios.delete(`${process.env.BACKEND_API}/tours/${id}`);
+      const data = await axios.get(`${process.env.BACKEND_API}/tours/${user.id}`);
       setTours(data.data);
     }
   };
